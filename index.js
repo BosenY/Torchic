@@ -34,15 +34,30 @@ const resolvers = {
         return res.data
       })
       if (name) {
-        return list.filter(item => item.name.toLocaleLowerCase() == name.toLocaleLowerCase())[0]
+        return list.filter(item => item.name.toLocaleLowerCase() == name.toLocaleLowerCase()).map(item => {
+          if (item.repo) {
+            item.repo.full_name = 'https://github.com/' + item.repo.full_name
+          }
+          return item
+        })[0]
       }
-      return list.filter(item => item.id == id)[0]
+      return list.filter(item => item.id == id).map(item => {
+        if (item.repo) {
+          item.repo.full_name = 'https://github.com/' + item.repo.full_name
+        }
+        return item
+      })[0]
     },
     pokemons: async () => {
       let list = await axios.get(`https://cheeaun.github.io/repokemon/data/repokemon.min.json`).then(res => {
         return res.data
       })
-      return list
+      return list.map(item => {
+        if (item.repo) {
+          item.repo.full_name = 'https://github.com/' + item.repo.full_name
+        }
+        return item
+      })
     },
 
   }

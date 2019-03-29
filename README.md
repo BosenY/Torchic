@@ -2,10 +2,9 @@
 
 <img src="./assets/images/255.00.png" width="100" height="100" />
 
-
 Apollo Server for Showcase of GitHub repos with Pokémon names
 
-
+<img src="./assets/images/desc.png" />
 
 ## How to develop on local
 
